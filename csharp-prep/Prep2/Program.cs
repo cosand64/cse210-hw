@@ -4,6 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Prep2 World!");
+        Console.Write("What is the percent that you recieved? ");
+        string userInput = Console.ReadLine();
+        int gradePercent = int.Parse(userInput);
+        
+        Console.Write($"Your grade is {gradePercent}");
+        
     }
+    
 }
