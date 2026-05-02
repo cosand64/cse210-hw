@@ -14,17 +14,28 @@ class Program
         return userName;
     }
 
-    static int PromptFavoriteNumber()
+    static int PromptUserNumber()
     {
         Console.Write("What is your favorite whole number? ");
         int favoriteNumber = int.Parse(Console.ReadLine());
         return favoriteNumber;
     }
 
+    static void PromptBirthYear(out int birthyear)
+    {
+        Console.Write("What is your birth year? ");
+        birthyear = int.Parse(Console.ReadLine());
+    }
+
     static void Main(string[] args)
     {
         DisplayWelcome();
+
         string userName = PromptUserName();
-        int favoriteNumber = PromptFavoriteNumber();
+
+        int favoriteNumber = PromptUserNumber();
+
+        int birthyear;
+        PromptBirthYear(out birthyear);
     }
 }
