@@ -27,6 +27,18 @@ class Program
         birthyear = int.Parse(Console.ReadLine());
     }
 
+    static int SquareUserNumber(int userNumber)
+    {
+        int numberSquared = userNumber * userNumber;
+        return numberSquared;
+    }
+
+    static void DisplayResult(string userName, int squaredNumber, int birthyear)
+    {
+        Console.WriteLine($"{userName} your number squared is {squaredNumber}.");
+        Console.WriteLine($"You will turn {2026 - birthyear} years old this year. ");
+    }
+
     static void Main(string[] args)
     {
         DisplayWelcome();
@@ -34,8 +46,11 @@ class Program
         string userName = PromptUserName();
 
         int favoriteNumber = PromptUserNumber();
+        int squaredUserNumber = SquareUserNumber(favoriteNumber);
 
         int birthyear;
         PromptBirthYear(out birthyear);
+
+        DisplayResult(userName, squaredUserNumber, birthyear);
     }
 }
