@@ -43,5 +43,7 @@ class Program
         // {
         //     Console.WriteLine(i);
         // }
+
+        Console.WriteLine("test");
     }
 }
