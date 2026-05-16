@@ -6,6 +6,10 @@ class JournalEntry
 
     string[] _prompts =
     {
+        "Who was the most interesting person I interacted with today?",
+        "What was the best part of my day?",
+        "How did I see the hand of the Lord in my life today?",
+        "What was the strongest emotion I felt today?",
         "How are you feeling today?",
         "Who did you talk with today?"
     };
@@ -15,8 +19,10 @@ class JournalEntry
     {
         _date = DateTime.Now.ToShortDateString();
 
-        // Finish this code - need a random prompt
-        _prompt = _prompts[0];
+        Random random = new Random();
+        int index = random.Next(_prompts.Length);
+        _prompt = _prompts[index];
+        
         Console.WriteLine(_prompt);
         _response = Console.ReadLine();
     }
