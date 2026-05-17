@@ -14,7 +14,17 @@ class JournalEntry
         "Who did you talk with today?"
     };
 
-// Finish code - need more prompts
+    public JournalEntry() 
+    {
+    }
+
+    public JournalEntry(string date, string prompt, string response)
+    {
+        _date = date;
+        _prompt = prompt;
+        _response = response;
+    }
+
     public void CreateJournalEntry()
     {
         _date = DateTime.Now.ToShortDateString();
