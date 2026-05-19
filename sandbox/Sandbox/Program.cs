@@ -3,22 +3,22 @@ using System;
 class Program
 {
 
-    static void DisplayGreeting()
-    {
-        Console.WriteLine("hello Betty");
-    }
+    // static void DisplayGreeting()
+    // {
+    //     Console.WriteLine("hello Betty");
+    // }
 
-    static double AddNumbers(int n1, int n2, double n3)
-    {
-        double total = n1 + n2 + n3;
-        return total;
-    }
+    // static double AddNumbers(int n1, int n2, double n3)
+    // {
+    //     double total = n1 + n2 + n3;
+    //     return total;
+    // }
     static void Main(string[] args)
     {
 
-        DisplayGreeting();
-        double total = AddNumbers(10, 20, 1001.234);
-        Console.WriteLine(total);
+        // DisplayGreeting();
+        // double total = AddNumbers(10, 20, 1001.234);
+        // Console.WriteLine(total);
 
         // This is a super cool comment
         // another comment
@@ -44,6 +44,8 @@ class Program
         //     Console.WriteLine(i);
         // }
 
-        Console.WriteLine("test");
+        // Console.WriteLine("test");
+
+        
     }
 }
