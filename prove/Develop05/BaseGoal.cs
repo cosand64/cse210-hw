@@ -1,4 +1,6 @@
-class BaseGoal
+using System.Runtime.Intrinsics.X86;
+
+abstract class BaseGoal
 {
     private string _name;
     private string _description;
@@ -33,6 +35,7 @@ class BaseGoal
         _numberOfPoints = int.Parse(Console.ReadLine());
     }
 
+// get and formatt the string of user input
     public virtual string GetDisplayString()
     {
         char statusMarker = ' ';
@@ -52,5 +55,8 @@ class BaseGoal
         _status = true;
         return _numberOfPoints;
     }
+
+    public abstract void CreateGoal();
+    public abstract void RecordEvent();
 
 }
