@@ -17,19 +17,19 @@ abstract class BaseGoal
         _goalType = "";
     }
 
-    public void SetName()
+    protected void SetName()
     {
         Console.Write("What is the name of your goal: ");
         _name = Console.ReadLine();
     }
 
-    public void SetDescription()
+    protected void SetDescription()
     {
         Console.Write($"enter the description for your goal {_name}: ");
         _description = Console.ReadLine();
     }
 
-    public void SetNumberOfPoints()
+    protected void SetNumberOfPoints()
     {
         Console.Write($"enter the points earned for your goal {_name}: ");
         _numberOfPoints = int.Parse(Console.ReadLine());

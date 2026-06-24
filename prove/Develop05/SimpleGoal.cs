@@ -14,6 +14,6 @@ class SimpleGoal : BaseGoal
 
     public override void RecordEvent()
     {
-        // populate later
+        MarkComplete();
     }
 }
