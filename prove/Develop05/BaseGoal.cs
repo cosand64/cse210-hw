@@ -57,6 +57,6 @@ abstract class BaseGoal
     }
 
     public abstract void CreateGoal();
-    public abstract void RecordEvent();
+    public abstract int RecordEvent();
 
 }

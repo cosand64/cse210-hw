@@ -4,17 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // BaseGoal myGoal = new BaseGoal();
-        // myGoal.SetName();
-        // myGoal.SetDescription();
-        // myGoal.SetNumberOfPoints();
-        // myGoal.GetDisplayString();
-        // Console.WriteLine(myGoal.GetDisplayString());
-        // myGoal.MarkComplete();
-        // Console.WriteLine(myGoal.GetDisplayString());
-
-        SimpleGoal myGoal = new SimpleGoal();
-        myGoal.CreateGoal();
-        Console.WriteLine(myGoal.GetDisplayString());
+        GoalManager goalManager = new GoalManager();
+        goalManager.Start();
     }
 }
