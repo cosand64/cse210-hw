@@ -17,6 +17,15 @@ abstract class BaseGoal
         _goalType = "";
     }
 
+    public BaseGoal(string name, string description, int points, bool status, string goalType)
+    {
+        _name = name;
+        _description = description;
+        _numberOfPoints = points;
+        _status = status;
+        _goalType = goalType;
+    }
+
     protected void SetName()
     {
         Console.Write("What is the name of your goal: ");

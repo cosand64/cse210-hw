@@ -4,9 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        GoalManager goalManager = new GoalManager();
+        Goals goalManager = new Goals();
         goalManager.Start();
-
+        
         
     }
 }
