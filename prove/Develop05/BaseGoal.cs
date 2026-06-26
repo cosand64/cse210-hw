@@ -35,6 +35,26 @@ abstract class BaseGoal
         _numberOfPoints = int.Parse(Console.ReadLine());
     }
 
+    protected string GetName()
+    {
+        return _name;
+    }
+
+    protected string GetDescription()
+    {
+        return _description;
+    }
+
+    protected int GetPoints()
+    {
+        return _numberOfPoints;
+    }
+
+    protected bool GetStatus()
+    {
+        return _status;
+    }
+
 // get and formatt the string of user input
     public virtual string GetDisplayString()
     {
@@ -44,6 +64,12 @@ abstract class BaseGoal
             statusMarker = 'X';
         }
         return $"[{statusMarker}] Name: {_name}, Description: {_description}, points Earned: {_numberOfPoints}";
+    }
+
+    // Formats user's string so that it can be saved in a txt file
+    public virtual string GetFileSystemString()
+    {
+        return $"{GetType().Name}:{_name},{_description},{_numberOfPoints},{_status}";
     }
 
     /* 
