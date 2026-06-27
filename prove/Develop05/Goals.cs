@@ -79,13 +79,15 @@ class Goals
         }
         else if (typeChoice == "2")
         {
-            // We will hook this up when we build EternalGoal (Step 13)
-            Console.WriteLine("Eternal Goal feature coming soon...");
+            EternalGoal newGoal = new EternalGoal();
+            newGoal.CreateGoal();
+            _goals.Add(newGoal);
         }
         else if (typeChoice == "3")
         {
-             // We will hook this up when we build CheckListGoal (Step 14)
-            Console.WriteLine("Checklist Goal feature coming soon...");
+            CheckListGoal newGoal = new CheckListGoal();
+            newGoal.CreateGoal();
+            _goals.Add(newGoal);
         }
         else
         {
@@ -113,20 +115,110 @@ class Goals
 
     public void SaveGoals()
     {
-        // fill in later
-        Console.WriteLine("\n[Save feature coming soon...]");
+        Console.Write("What is the filename for the goal file? ");
+        string fileName = Console.ReadLine();
+
+        using (StreamWriter outputFile = new StreamWriter(fileName))
+        {
+            outputFile.WriteLine(_score);
+
+            foreach (BaseGoal goal in _goals)
+            {
+                outputFile.WriteLine(goal.GetFileSystemString());
+            }
+        }
+        Console.WriteLine("Goals saved successfully.");
     }
 
     public void LoadGoals()
     {
-        // fill in later
-        Console.WriteLine("\n[Load feature coming soon...]");
+       Console.Write("What is the filename for the goal file? ");
+        string fileName = Console.ReadLine();
+
+        if (File.Exists(fileName))
+        {
+            string[] lines = File.ReadAllLines(fileName);
+
+            _score = int.Parse(lines[0]);
+            _goals.Clear();
+
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string line = lines[i];
+                
+                string[] parts = line.Split(':');
+                string goalType = parts[0];
+                string[] details = parts[1].Split(',');
+
+                string name = details[0];
+                string description = details[1];
+                int points = int.Parse(details[2]);
+                bool status = bool.Parse(details[3]);
+
+                if (goalType == "SimpleGoal")
+                {
+                    SimpleGoal loadedGoal = new SimpleGoal(name, description, points, status);
+                    _goals.Add(loadedGoal);
+                }
+                else if (goalType == "EternalGoal")
+                {
+                    int completions = int.Parse(details[4]);
+                    EternalGoal loadedGoal = new EternalGoal(name, description, points, status, completions);
+                    _goals.Add(loadedGoal);
+                }
+                else if (goalType == "CheckListGoal")
+                {
+                    int bonus = int.Parse(details[4]);
+                    int target = int.Parse(details[5]);
+                    int completions = int.Parse(details[6]);
+                    CheckListGoal loadedGoal = new CheckListGoal(name, description, points, status, bonus, target, completions);
+                    _goals.Add(loadedGoal);
+                }
+            }
+            Console.WriteLine("Goals loaded successfully.");
+        }
+        else
+        {
+            Console.WriteLine("File not found.");
+        }
     }
 
     public void RecordEvent()
     {
-        // fill in later
-        Console.WriteLine("\n[Record Event feature coming soon...]");
+
+        if (_goals.Count == 0)
+        {
+            Console.WriteLine("You have no goals. Please create a goal first.");
+            return;
+        }
+
+        ListGoalNames();
+
+        Console.Write("Which goal did you accomplish? ");
+        string input = Console.ReadLine();
+        
+        if (int.TryParse(input, out int goalIndex))
+        {
+            goalIndex = goalIndex - 1; 
+
+            if (goalIndex >= 0 && goalIndex < _goals.Count)
+            {
+                int pointsEarned = _goals[goalIndex].RecordEvent();
+ 
+                _score += pointsEarned;
+                
+                Console.WriteLine($"Congratulations! You have earned {pointsEarned} points!");
+                Console.WriteLine($"You now have {_score} points.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid goal selection.");
+            }
+        }
+        else
+        {
+             Console.WriteLine("Invalid input. Please enter a number.");
+        }
     }
 
 }

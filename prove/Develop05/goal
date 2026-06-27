@@ -1,0 +1,4 @@
+526
+SimpleGoal:run,to run a lot,1,True
+EternalGoal:go to temple,I want to visit the temple,20,False,3
+CheckListGoal:bike,bike a few times,5,False,100,10,13
