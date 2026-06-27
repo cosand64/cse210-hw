@@ -2,6 +2,7 @@ using System.Security.Cryptography.X509Certificates;
 
 class Goals
 {
+    private const int XP_PER_LEVEL = 500;
     private List<BaseGoal> _goals;
     private int _score;
 
@@ -11,12 +12,30 @@ class Goals
         _score = 0;
     }
 
+    private int GetLevel()
+    {
+        return (_score / XP_PER_LEVEL) + 1;
+    }
+
+    private string GetTitle()
+    {
+        int level = GetLevel();
+        if (level < 2) return "Novice";
+        if (level < 4) return "Apprentice";
+        if (level < 7) return "Quest Seeker";
+        if (level < 10) return "Master of Habits";
+        return "Eternal Sage";
+    }
+
     public void Start()
     {
         bool quit = false;
         while (!quit)
         {
-            Console.WriteLine($"\nYou have {_score} points.\n");
+            Console.WriteLine($"\nLevel: {GetLevel()}");
+            Console.WriteLine($"Title: {GetTitle()}");
+            Console.WriteLine($"You have {_score} points.\n");
+            
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Create New Goal");
             Console.WriteLine("  2. List Goals");
